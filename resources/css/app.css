@@ -7,3 +7,19 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+.header-menu-description {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .header-menu-description { grid-template-rows: 0fr; }
+    .header-menu-link:hover .header-menu-description,
+    .header-menu-link:focus-visible .header-menu-description { grid-template-rows: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header-menu-description { transition: none; }
+}

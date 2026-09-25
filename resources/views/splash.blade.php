@@ -3,32 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Domus — Ticketing & Resolution Platform</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>{{ isset($pageTitle) ? $pageTitle.' — Domus' : 'Domus — Ticketing & Resolution Platform' }}</title>
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
 
   <!-- Navigation Bar -->
   <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
       <!-- Logo -->
-      <div class="flex items-center space-x-3">
+      <a href="{{ route('home') }}" aria-label="Domus home" class="flex items-center gap-3">
         <div class="w-9 h-9 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/30">
           D
         </div>
         <span class="font-semibold text-lg tracking-tight text-white">Domus</span>
-        <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-700">v1.0</span>
-      </div>      
+        <span class="hidden sm:inline text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-700">v1.0</span>
+      </a>
+      <x-header-menu />
     </div>
   </header>
 
   <!-- Hero Section -->
   <main class="flex-1 flex flex-col justify-center max-w-4xl mx-auto px-6 py-16 text-center">
     
+    @isset($pageTitle)
+    <p class="mb-3 text-sm font-medium text-indigo-400">Discover Domus</p>
+    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">{{ $pageTitle }}</h1>
+    <p class="mt-6 text-lg text-slate-400 max-w-2xl mx-auto">{{ $pageDescription }}</p>
+    <a href="{{ route('home') }}" class="mt-8 self-center rounded-lg border border-slate-700 px-5 py-3 text-sm text-indigo-300 hover:bg-slate-800 focus-visible:outline-2 focus-visible:outline-indigo-400">Back to home</a>
+    @else
     <!-- Main Headline -->
     <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
      Household Ticketing System <br class="hidden sm:inline" />
-      <span class="bg-gradient-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">for everyday chores.</span>
+      <span class="bg-linear-to-r from-indigo-400 to-sky-400 bg-clip-text text-transparent">for everyday chores.</span>
     </h1>
 
     <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
@@ -40,6 +47,7 @@
       <x-generic-info />
       <x-use-cases />
     </div>
+    @endisset
   </main>
 
   <!-- Footer -->
