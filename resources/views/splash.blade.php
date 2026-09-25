@@ -18,7 +18,10 @@
         </div>
         <span class="font-semibold text-lg tracking-tight text-white">Domus</span>
         <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full border border-slate-700">v1.0</span>
-      </div>      
+      </div>
+
+      <!-- Navigation Dropdown Menu -->
+      <x-header-menu />      
     </div>
   </header>
 
