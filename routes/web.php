@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SplashController; 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SplashController::class, 'index'])->name('home');
